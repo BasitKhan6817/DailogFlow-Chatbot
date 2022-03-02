@@ -14,9 +14,6 @@ dotenv.config()
 
 gcHelper();
 
-// Your credentials
-// const CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
-
 
 const PORT = process.env.PORT || 4000;
 
