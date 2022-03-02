@@ -1,5 +1,6 @@
 import express from "express";
 import dialogflow from '@google-cloud/dialogflow';
+import gcHelper from "google-credentials-helper"
 import cors from "cors";
 import { v4 as uuidv4 } from 'uuid';
 import dotenv from 'dotenv';
@@ -11,8 +12,10 @@ app.use(cors())
 app.use(express.json())
 dotenv.config()
 
+gcHelper();
+
 // Your credentials
-const CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+// const CREDENTIALS = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
 
 const PORT = process.env.PORT || 4000;
