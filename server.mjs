@@ -4,13 +4,16 @@ import gcHelper from "google-credentials-helper"
 import cors from "cors";
 import { v4 as uuidv4 } from 'uuid';
 import dotenv from 'dotenv';
-
+import path from 'path';
 
 const app = express();
 
 app.use(cors())
 app.use(express.json())
 dotenv.config()
+app.use('/', express.static(path.join(__dirname, 'client/build')))
+
+
 
 gcHelper();
 
@@ -54,6 +57,9 @@ app.post('/dialogflow', async (req, res) => {
     res.send(data);
 });
 
+app.get("/**", (req, res, next) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"))
+})
 app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`);
 });
